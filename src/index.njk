@@ -1,0 +1,90 @@
+---
+layout: base.njk
+---
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <div class="eyebrow">Atendimento online para adultos</div>
+    <h1>Eu ajudo quem vive sob pressão a usar melhor o próprio cérebro, unindo neurociência do estresse e terapia.</h1>
+    <p class="lead">Trabalho para encurtar o caminho da tentativa e erro até o que você quer.</p>
+    <div class="cta-row">
+      <a class="btn" href="#contato">Quero conversar</a>
+      <a class="btn ghost" href="#servicos">Conhecer o trabalho</a>
+    </div>
+  </div>
+</section>
+
+<div class="hook">
+  <div class="wrap">
+    <p>Seu cérebro coordena muitos processos por trás de tudo o que você faz.</p>
+    <span></span>
+  </div>
+</div>
+
+<section class="block" id="servicos">
+  <div class="wrap">
+    <h2>Como posso te ajudar</h2>
+    <p class="sub">Três caminhos que conversam entre si. Na primeira conversa, a gente entende juntos qual faz mais sentido pra você agora.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="num">01</div>
+        <h3>Psicoterapia</h3>
+        <p>Terapia cognitivo-comportamental para lidar com estresse, ansiedade e a sensação de estar sempre no limite, com um olhar atento ao que acontece no seu cérebro.</p>
+        <div class="for"><b>Para quem</b> sente que a pressão está cobrando um preço alto demais.</div>
+      </div>
+      <div class="card">
+        <div class="num">02</div>
+        <h3>Reabilitação neuropsicológica</h3>
+        <p>Treino e estratégias para atenção, memória e organização no dia a dia. Exercícios pensados para a sua rotina, não para um laboratório.</p>
+        <div class="for"><b>Para quem</b> convive com esquecimentos, distração e prazos escapando.</div>
+      </div>
+      <div class="card">
+        <div class="num">03</div>
+        <h3>Avaliação neuropsicológica</h3>
+        <p>Investigação cuidadosa do funcionamento cognitivo em adultos, incluindo suspeita de TDAH e TEA, com laudo e devolutiva explicados com clareza.</p>
+        <div class="for"><b>Para quem</b> quer entender o próprio funcionamento e ter respostas.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block about" id="sobre">
+  <div class="wrap">
+    <div class="script">Sobre mim</div>
+    <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+    <div class="about-text">
+      <blockquote>Do acordar ao dormir, seu cérebro coordena muitos processos ao mesmo tempo. Eu me encanto e cuido disso.</blockquote>
+      <p>Escolhi a psicologia depois de ver o documentário <em>Truques da Mente</em>. Os experimentos de atenção e memória me deixaram com a sensação de ser a Sherlock Holmes do cérebro. Na neuropsicologia, as aulas do meu orientador me mostraram que um diagnóstico pode libertar.</p>
+      <p>Hoje eu pesquiso o estresse, do nível celular à cognição, e atendo adultos que se acostumaram a conviver com esquecimentos e erros que dá para cuidar.</p>
+      <div class="creds">
+        <span>Psicóloga pela UFRN</span>
+        <span>Mestranda em Psicobiologia · UFRN</span>
+        <span>Pesquisa em estresse e cognição</span>
+      </div>
+    </div>
+    <div class="portrait">
+      {%- if site.foto %}<img src="{{ site.foto }}" alt="Foto de {{ site.nome }}">{% else %}sua foto aqui{% endif -%}
+    </div>
+  </div>
+</section>
+
+<section class="block" id="blog">
+  <div class="wrap">
+    <h2>Blog</h2>
+    <p class="sub">Neurociência do dia a dia, em linguagem de gente. Textos para entender o que o seu cérebro está fazendo enquanto você vive.</p>
+    <div class="posts">
+      {%- for post in collections.artigos | primeiros(3) %}
+      {% include "cartao.njk" %}
+      {%- endfor %}
+    </div>
+    {% if collections.artigos.length > 3 %}<div class="all-posts"><a class="btn ghost" href="/blog/">Ver todos os textos</a></div>{% endif %}
+  </div>
+</section>
+
+<section class="block contact" id="contato">
+  <div class="wrap">
+    <h2>Vamos conversar?</h2>
+    <p class="sub">Me conta o que está acontecendo. Na primeira conversa a gente vê juntos o melhor caminho para você.</p>
+    <a class="btn" href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener">Falar no WhatsApp</a>
+    <small>{{ site.horarios }}</small>
+  </div>
+</section>

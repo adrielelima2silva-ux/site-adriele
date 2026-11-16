@@ -1,0 +1,12 @@
+{%- set d = post.data -%}
+{%- set cor = d.cor or "areia" -%}
+{%- set icone = d.icone or "sol" -%}
+{%- set fundo = {"areia": "var(--sand)", "azul": "var(--wine)", "verde": "var(--terra)"}[cor] or "var(--sand)" -%}
+{%- if d.em_breve %}<div class="post-card soon">{% else %}<a class="post-card" href="{{ post.url }}">{% endif %}
+  <div class="thumb" style="background:{{ fundo }}">{% include "icone.njk" %}</div>
+  <div class="body">
+    <div class="tag">{{ d.categoria }}</div>
+    <h3>{{ d.title }}</h3>
+    <p>{% if d.em_breve %}Em breve.{% else %}{{ d.resumo }}{% endif %}</p>
+  </div>
+{% if d.em_breve %}</div>{% else %}</a>{% endif %}

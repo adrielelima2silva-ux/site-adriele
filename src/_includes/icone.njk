@@ -1,0 +1,10 @@
+{%- set traco = "var(--terra)" if cor == "areia" else "var(--bg)" -%}
+<svg viewBox="0 0 64 64" fill="none" stroke="{{ traco }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+{%- if icone == "lua" %}<path d="M40 12a20 20 0 1 0 12 30A16 16 0 0 1 40 12z"/>
+{%- elif icone == "relogio" %}<circle cx="32" cy="32" r="18"/><path d="M32 20v12l8 6"/>
+{%- elif icone == "cerebro" %}<path d="M30 14c-6 0-10 4-10 9-5 1-8 5-8 10s3 9 8 10c1 5 5 8 10 8V14z"/><path d="M34 14c6 0 10 4 10 9 5 1 8 5 8 10s-3 9-8 10c-1 5-5 8-10 8V14z"/>
+{%- elif icone == "livro" %}<path d="M12 16h16a4 4 0 0 1 4 4v30a3 3 0 0 0-3-3H12zM52 16H36a4 4 0 0 0-4 4v30a3 3 0 0 1 3-3h17z"/>
+{%- elif icone == "coracao" %}<path d="M32 50S12 38 12 24a10 10 0 0 1 20-3 10 10 0 0 1 20 3c0 14-20 26-20 26z"/>
+{%- else %}<circle cx="32" cy="38" r="12"/><path d="M8 50h48M32 14v6M14 22l4 4M50 22l-4 4"/>
+{%- endif %}
+</svg>

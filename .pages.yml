@@ -1,0 +1,86 @@
+# Painel de edição (Pages CMS: https://app.pagescms.org)
+# Este arquivo diz ao painel quais partes do site você pode editar por formulário.
+
+media:
+  input: src/img
+  output: /img
+
+content:
+  - name: artigos
+    label: Artigos do blog
+    type: collection
+    path: src/blog/posts
+    filename: "{primary}.md"
+    exclude: [posts.11tydata.js]
+    view:
+      fields: [title, date, em_breve]
+      sort: [date]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Título
+        type: string
+        required: true
+      - name: date
+        label: Data de publicação
+        type: date
+        required: true
+      - name: categoria
+        label: Categoria (aparece em letras pequenas acima do título)
+        type: string
+        default: Um dia do seu cérebro
+      - name: resumo
+        label: Resumo (uma frase que aparece no cartão do blog)
+        type: text
+      - name: icone
+        label: Ícone do cartão
+        type: select
+        default: sol
+        options:
+          values:
+            - { value: sol, label: "Sol (manhã, despertar)" }
+            - { value: lua, label: "Lua (sono, noite)" }
+            - { value: relogio, label: "Relógio (tempo, pressão)" }
+            - { value: cerebro, label: "Cérebro" }
+            - { value: livro, label: "Livro (estudo, memória)" }
+            - { value: coracao, label: "Coração (emoções)" }
+      - name: cor
+        label: Cor do cartão
+        type: select
+        default: areia
+        options:
+          values:
+            - { value: areia, label: "Verde clarinho" }
+            - { value: azul, label: "Azul-petróleo" }
+            - { value: verde, label: "Verde" }
+      - name: em_breve
+        label: Mostrar como "Em breve" (cartão aparece, mas o texto ainda não)
+        type: boolean
+        default: false
+      - name: rascunho
+        label: Rascunho (esconde o artigo do site)
+        type: boolean
+        default: false
+      - name: referencias
+        label: Para quem quer se aprofundar (referências, opcional)
+        type: text
+      - name: body
+        label: Texto do artigo
+        type: rich-text
+
+  - name: dados
+    label: Dados de contato e do site
+    type: file
+    path: src/_data/site.json
+    fields:
+      - { name: nome, label: Nome, type: string }
+      - { name: profissao, label: Profissão, type: string }
+      - { name: crp, label: CRP, type: string }
+      - { name: whatsapp, label: "WhatsApp (só números, com 55 e DDD, ex.: 5584999998888)", type: string }
+      - { name: cidade, label: Cidade, type: string }
+      - { name: horarios, label: Linha abaixo do botão do WhatsApp, type: string }
+      - { name: descricao, label: Descrição do site no Google, type: text }
+      - { name: foto, label: Sua foto (seção Sobre mim), type: image }
+      - { name: url, label: Endereço do site (deixe em branco por enquanto), type: string }

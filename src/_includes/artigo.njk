@@ -1,0 +1,23 @@
+---
+layout: base.njk
+---
+<article class="article">
+  <div class="narrow">
+    <a class="back" href="/blog/">← Voltar ao blog</a>
+    <div class="tag">{{ categoria }}</div>
+    <h1>{{ title }}</h1>
+    <div class="meta">{{ site.nome }} · {{ page.date | dataBR }} · {{ content | tempoLeitura }} min de leitura</div>
+
+    <div class="content">
+{{ content | safe }}
+    </div>
+
+    {% if referencias %}<div class="refs"><b>Para quem quer se aprofundar:</b> {{ referencias }}</div>{% endif %}
+
+    <div class="end">
+      <h3>Sente que a pressão está cobrando um preço?</h3>
+      <p>A gente pode conversar sobre isso.</p>
+      <a class="btn" href="/#contato">Quero conversar</a>
+    </div>
+  </div>
+</article>

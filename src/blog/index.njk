@@ -1,0 +1,16 @@
+---
+layout: base.njk
+title: Blog
+resumo: Neurociência do dia a dia, em linguagem de gente.
+---
+<section class="block">
+  <div class="wrap">
+    <h2>Blog</h2>
+    <p class="sub">Neurociência do dia a dia, em linguagem de gente. Textos para entender o que o seu cérebro está fazendo enquanto você vive.</p>
+    <div class="posts">
+      {%- for post in collections.artigos %}
+      {% include "cartao.njk" %}
+      {%- endfor %}
+    </div>
+  </div>
+</section>

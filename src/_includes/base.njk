@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if title %}{{ title }} · {% endif %}{{ site.nome }} · {{ site.profissao }}</title>
+<meta name="description" content="{{ resumo or site.descricao }}">
+<meta property="og:title" content="{{ title or (site.nome + ' · ' + site.profissao) }}">
+<meta property="og:description" content="{{ resumo or site.descricao }}">
+<meta property="og:locale" content="pt_BR">
+<link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="/">{{ site.nome }}<small>{{ site.profissao }} · {{ site.crp }}</small></a>
+    <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <nav class="links">
+      <a href="/#servicos">Como ajudo</a>
+      <a href="/#sobre">Sobre mim</a>
+      <a href="/blog/">Blog</a>
+      <a class="btn" href="/#contato">Agendar conversa</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+{{ content | safe }}
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div><b>{{ site.nome }}</b> · {{ site.profissao }} · {{ site.crp }}</div>
+    <div>Atendimento online · {{ site.cidade }}</div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var btn = document.querySelector('.menu-toggle');
+    var links = document.querySelector('.links');
+    btn.addEventListener('click', function(){
+      var open = links.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+    links.addEventListener('click', function(e){
+      if (e.target.tagName === 'A') { links.classList.remove('open'); btn.setAttribute('aria-expanded', false); }
+    });
+  })();
+</script>
+</body>
+</html>
