@@ -30,18 +30,21 @@ layout: base.njk
         <h3>Psicoterapia</h3>
         <p>Terapia cognitivo-comportamental para lidar com estresse, ansiedade e a sensação de estar sempre no limite, com um olhar atento ao que acontece no seu cérebro.</p>
         <div class="for"><b>Para quem</b> sente que a pressão está cobrando um preço alto demais.</div>
+        <a class="more" href="/servicos/psicoterapia/">Saiba mais →</a>
       </div>
       <div class="card">
         <div class="num">02</div>
         <h3>Reabilitação neuropsicológica</h3>
         <p>Treino e estratégias para atenção, memória e organização no dia a dia. Exercícios pensados para a sua rotina, não para um laboratório.</p>
         <div class="for"><b>Para quem</b> convive com esquecimentos, distração e prazos escapando.</div>
+        <a class="more" href="/servicos/reabilitacao-neuropsicologica/">Saiba mais →</a>
       </div>
       <div class="card">
         <div class="num">03</div>
         <h3>Avaliação neuropsicológica</h3>
         <p>Investigação cuidadosa do funcionamento cognitivo em adultos, incluindo suspeita de TDAH e TEA, com laudo e devolutiva explicados com clareza.</p>
         <div class="for"><b>Para quem</b> quer entender o próprio funcionamento e ter respostas.</div>
+        <a class="more" href="/servicos/avaliacao-neuropsicologica/">Saiba mais →</a>
       </div>
     </div>
   </div>
@@ -62,7 +65,7 @@ layout: base.njk
       </div>
     </div>
     <div class="portrait">
-      {%- if site.foto %}<img src="{{ site.foto }}" alt="Foto de {{ site.nome }}">{% else %}sua foto aqui{% endif -%}
+      {%- if site.foto %}<img src="{{ site.foto }}" alt="{{ site.nome }}, psicóloga, sorrindo" width="900" height="1600" loading="lazy">{% else %}sua foto aqui{% endif -%}
     </div>
   </div>
 </section>
@@ -84,7 +87,45 @@ layout: base.njk
   <div class="wrap">
     <h2>Vamos conversar?</h2>
     <p class="sub">Me conta o que está acontecendo. Na primeira conversa a gente vê juntos o melhor caminho para você.</p>
-    <a class="btn" href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener">Falar no WhatsApp</a>
+    <a class="btn" href="{{ site | whatsapp }}" target="_blank" rel="noopener">Falar no WhatsApp</a>
     <small>{{ site.horarios }}</small>
   </div>
 </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "{{ '/' | absoluta(site) }}#adriele",
+      "name": "{{ site.nome }}",
+      "jobTitle": "Psicóloga",
+      "description": "Psicóloga ({{ site.crp }}), mestranda em Psicobiologia na UFRN, com pesquisa em estresse e cognição.",
+      "image": "{{ site.foto | absoluta(site) }}",
+      "url": "{{ '/' | absoluta(site) }}",
+      "alumniOf": {"@type": "CollegeOrUniversity", "name": "Universidade Federal do Rio Grande do Norte (UFRN)"},
+      "knowsAbout": ["Terapia Cognitivo-Comportamental", "Avaliação neuropsicológica", "Reabilitação neuropsicológica", "TDAH em adultos", "TEA em adultos", "Estresse e cognição"]
+    },
+    {
+      "@type": "ProfessionalService",
+      "name": "{{ site.nome }} · Psicóloga",
+      "url": "{{ '/' | absoluta(site) }}",
+      "image": "{{ '/img/compartilhar.jpg' | absoluta(site) }}",
+      "description": "{{ site.descricao }}",
+      "telephone": "+{{ site.whatsapp }}",
+      "founder": {"@id": "{{ '/' | absoluta(site) }}#adriele"},
+      "address": {"@type": "PostalAddress", "addressLocality": "Parnamirim", "addressRegion": "RN", "addressCountry": "BR"},
+      "areaServed": {"@type": "Country", "name": "Brasil"},
+      "availableLanguage": "pt-BR",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Serviços",
+        "itemListElement": [{% for s in collections.servicos | sort(false, false, "data.numero") %}
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": {{ s.data.title | dump | safe }}, "url": "{{ s.url | absoluta(site) }}"}}{% if not loop.last %},{% endif %}{% endfor %}
+        ]
+      }
+    }
+  ]
+}
+</script>

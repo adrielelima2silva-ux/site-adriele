@@ -3,11 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{% if title %}{{ title }} · {% endif %}{{ site.nome }} · {{ site.profissao }}</title>
-<meta name="description" content="{{ resumo or site.descricao }}">
-<meta property="og:title" content="{{ title or (site.nome + ' · ' + site.profissao) }}">
-<meta property="og:description" content="{{ resumo or site.descricao }}">
+{%- set tituloPagina = titulo_seo or (title + " · " + site.nome + " · " + site.profissao if title else site.nome + " · Psicóloga online | TCC, avaliação e reabilitação neuropsicológica") -%}
+{%- set descricaoPagina = descricao_seo or resumo or site.descricao -%}
+{%- set urlPagina = page.url | absoluta(site) -%}
+{%- set imagemPagina = "/img/compartilhar.jpg" | absoluta(site) -%}
+<title>{{ tituloPagina }}</title>
+<meta name="description" content="{{ descricaoPagina }}">
+<link rel="canonical" href="{{ urlPagina }}">
+{% if rascunho or em_breve %}<meta name="robots" content="noindex">{% endif %}
+{% if site.google_verificacao %}<meta name="google-site-verification" content="{{ site.google_verificacao }}">{% endif %}
+<meta name="author" content="{{ site.nome }}">
+<meta property="og:type" content="{{ 'article' if layout == 'artigo.njk' else 'website' }}">
+<meta property="og:site_name" content="{{ site.nome }} · {{ site.profissao }}">
+<meta property="og:title" content="{{ tituloPagina }}">
+<meta property="og:description" content="{{ descricaoPagina }}">
+<meta property="og:url" content="{{ urlPagina }}">
+<meta property="og:image" content="{{ imagemPagina }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1E4556">
 <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

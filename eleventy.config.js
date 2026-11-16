@@ -32,6 +32,17 @@ export default function (eleventyConfig) {
     return Math.max(1, Math.round(palavras / 200));
   });
 
+  // Link do WhatsApp com mensagem pronta
+  eleventyConfig.addFilter("whatsapp", (site) =>
+    `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.mensagem_whatsapp || "")}`
+  );
+
+  // Endereço completo (para Google e redes sociais)
+  eleventyConfig.addFilter("absoluta", (caminho, site) => (site.url || "").replace(/\/$/, "") + caminho);
+
+  // Data no formato AAAA-MM-DD (mapa do site e dados estruturados)
+  eleventyConfig.addFilter("dataISO", (d) => new Date(d).toISOString().slice(0, 10));
+
   eleventyConfig.addFilter("primeiros", (arr, n) => (arr || []).slice(0, n));
 
   return {

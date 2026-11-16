@@ -21,3 +21,17 @@ layout: base.njk
     </div>
   </div>
 </article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ title | dump | safe }},
+  "description": {{ resumo | dump | safe }},
+  "datePublished": "{{ page.date | dataISO }}",
+  "inLanguage": "pt-BR",
+  "mainEntityOfPage": "{{ page.url | absoluta(site) }}",
+  "image": "{{ '/img/compartilhar.jpg' | absoluta(site) }}",
+  "author": {"@type": "Person", "name": "{{ site.nome }}", "jobTitle": "Psicóloga", "url": "{{ '/' | absoluta(site) }}"}
+}
+</script>

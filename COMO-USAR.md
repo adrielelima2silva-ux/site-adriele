@@ -8,7 +8,8 @@ Este manual explica como cuidar do site sem precisar programar.
 |---|---|
 | Escrever, editar ou apagar um artigo do blog | Painel de edição → **Artigos do blog** |
 | WhatsApp, CRP, cidade, sua foto | Painel de edição → **Dados de contato e do site** |
-| Textos da página inicial (abertura, serviços, Sobre mim) | Arquivo `src/index.njk` (peça ajuda ao Claude) |
+| Descrição detalhada e perguntas frequentes de cada serviço | Painel de edição → **Páginas de serviço** |
+| Textos da página inicial (abertura, cartões, Sobre mim) | Arquivo `src/index.njk` (peça ajuda ao Claude) |
 | Cores e fontes | Arquivo `src/css/style.css` (peça ajuda ao Claude) |
 
 ## O painel de edição
@@ -38,6 +39,20 @@ O painel é o **Pages CMS**, gratuito. Ele mostra formulários simples em vez de
 - Para o quadro verde de destaque, use o botão de citação (**"**), chamado "Quote" ou "Blockquote".
 - Marque **Rascunho** para salvar sem publicar. Desmarque quando estiver pronto.
 - **Em breve** mostra o cartão com o título, mas sem o texto. É útil para anunciar o próximo artigo.
+
+## Como o site aparece no Google (SEO)
+
+Já vem pronto:
+- Cada página tem título e descrição pensados para busca (ex.: "Avaliação neuropsicológica online para adultos | Suspeita de TDAH e TEA").
+- Ao compartilhar o link no WhatsApp ou no Instagram, aparece um cartão com sua foto, seu nome e os serviços.
+- Dados estruturados (informações escondidas que o Google lê): quem você é, seu CRP, serviços, perguntas frequentes e artigos.
+- Mapa do site (`/sitemap.xml`) atualizado sozinho a cada artigo novo.
+
+O que faz mais diferença daqui para frente:
+1. **Publicar artigos com regularidade**, respondendo dúvidas que as pessoas digitam no Google.
+2. **Cadastrar o site no Google Search Console** (gratuito), para o Google encontrar o site mais rápido.
+3. **Criar o Perfil da Empresa no Google** (gratuito), com o link do site.
+4. **Ter um domínio próprio** (pago, opcional), que passa mais confiança e ajuda no Google a longo prazo.
 
 ## Ética profissional (lembrete)
 

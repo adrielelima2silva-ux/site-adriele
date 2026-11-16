@@ -1,0 +1,54 @@
+---
+layout: base.njk
+---
+<article class="article service">
+  <div class="narrow">
+    <a class="back" href="/#servicos">← Todos os serviços</a>
+    <div class="tag">Atendimento online para adultos</div>
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ chamada }}</p>
+    <p class="for-line"><b>Para quem</b> {{ para_quem }}</p>
+    <a class="btn" href="{{ site | whatsapp }}" target="_blank" rel="noopener">Conversar no WhatsApp</a>
+
+    <div class="content">
+{{ content | safe }}
+    </div>
+
+    {% if faq %}
+    <section class="faq">
+      <h2>Perguntas frequentes</h2>
+      {% for item in faq %}
+      <details>
+        <summary>{{ item.pergunta }}</summary>
+        <p>{{ item.resposta }}</p>
+      </details>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    <div class="end">
+      <h3>Quer entender se isso faz sentido pra você?</h3>
+      <p>Me conta o que está acontecendo. Na primeira conversa a gente vê juntos o melhor caminho.</p>
+      <a class="btn" href="{{ site | whatsapp }}" target="_blank" rel="noopener">Falar no WhatsApp</a>
+    </div>
+
+    <nav class="other-services">
+      <div class="tag">Outros serviços</div>
+      {% for s in collections.servicos | sort(false, false, "data.numero") %}{% if s.url != page.url %}
+      <a href="{{ s.url }}">{{ s.data.title }} →</a>
+      {% endif %}{% endfor %}
+    </nav>
+  </div>
+</article>
+
+{%- if faq %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{% for item in faq %}
+    {"@type": "Question", "name": {{ item.pergunta | dump | safe }}, "acceptedAnswer": {"@type": "Answer", "text": {{ item.resposta | dump | safe }}}}{% if not loop.last %},{% endif %}{% endfor %}
+  ]
+}
+</script>
+{%- endif %}

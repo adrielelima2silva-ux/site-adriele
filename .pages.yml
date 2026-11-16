@@ -70,6 +70,31 @@ content:
         label: Texto do artigo
         type: rich-text
 
+  - name: servicos
+    label: Páginas de serviço
+    type: collection
+    path: src/servicos
+    filename: "{primary}.md"
+    exclude: [servicos.11tydata.js]
+    operations: { create: false, delete: false, rename: false }
+    view:
+      fields: [title]
+    fields:
+      - { name: title, label: Nome do serviço, type: string, required: true }
+      - { name: numero, label: Número no cartão (01, 02, 03), type: string }
+      - { name: titulo_seo, label: "Título no Google (até uns 60 caracteres)", type: string }
+      - { name: descricao_seo, label: "Descrição no Google (até uns 155 caracteres)", type: text }
+      - { name: chamada, label: Texto curto (aparece no cartão e no topo da página), type: text }
+      - { name: para_quem, label: "Para quem... (complete a frase)", type: string }
+      - name: faq
+        label: Perguntas frequentes
+        type: object
+        list: true
+        fields:
+          - { name: pergunta, label: Pergunta, type: string }
+          - { name: resposta, label: Resposta, type: text }
+      - { name: body, label: Texto da página, type: rich-text }
+
   - name: dados
     label: Dados de contato e do site
     type: file
@@ -83,4 +108,6 @@ content:
       - { name: horarios, label: Linha abaixo do botão do WhatsApp, type: string }
       - { name: descricao, label: Descrição do site no Google, type: text }
       - { name: foto, label: Sua foto (seção Sobre mim), type: image }
-      - { name: url, label: Endereço do site (deixe em branco por enquanto), type: string }
+      - { name: mensagem_whatsapp, label: Mensagem que já vem escrita no WhatsApp, type: string }
+      - { name: url, label: "Endereço completo do site (muda se você comprar um domínio)", type: string }
+      - { name: google_verificacao, label: Código de verificação do Google Search Console, type: string }
