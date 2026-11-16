@@ -7,6 +7,7 @@ export default function (eleventyConfig) {
   // Copia CSS e imagens sem alterar
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/img");
+  eleventyConfig.addPassthroughCopy("src/googleb8dff7edd177bd92.html"); // verificação do Google Search Console
 
   // Todos os artigos do blog, do mais novo para o mais antigo
   eleventyConfig.addCollection("artigos", (api) =>
