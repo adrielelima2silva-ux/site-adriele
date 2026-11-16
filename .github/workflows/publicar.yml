@@ -3,7 +3,7 @@ name: Publicar site
 
 on:
   push:
-    branches: [main]
+    branches: [main, ccr-d68a43d7-36wyjk]
   workflow_dispatch:
 
 permissions:
